@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './Navbar.css'
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -24,7 +25,7 @@ const Navbar = () => {
                     {/* NavLinks */}
                     <nav className={`nav-links ${menuOpen ? 'open' : ''}`}>
                         {navLinks.map((link, idx) => (
-                            <a key={idx} href={link.url} nClick={() => setMenuOpen(false)}>{link.title}</a>
+                            <Link key={idx} to={link.url} onClick={() => setMenuOpen(false)}>{link.title}</Link>
                         ))}
                     </nav>
                     {/* Hamburger Icon */}
