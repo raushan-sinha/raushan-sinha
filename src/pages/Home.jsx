@@ -3,8 +3,8 @@ import './Home.css';
 import Navbar from "../components/Navbar";
 import myImage from '../assets/Raushan-Image.jpg';
 import { FaGithub, FaInstagram, FaDev, FaLinkedinIn } from "react-icons/fa";
+import { RiTwitterXFill } from "react-icons/ri";
 import { MdOutlineRocketLaunch } from "react-icons/md";
-import { BsTwitterX } from "react-icons/bs";
 
 const Home = () => {
     //todo: Dev Title -
@@ -13,7 +13,7 @@ const Home = () => {
 
     //todo: Social Media Links -
     const socialLinks = [
-        { href: 'https://x.com/84Raushan', icon: <BsTwitterX /> },
+        { href: 'https://x.com/84Raushan', icon: <RiTwitterXFill /> },
         { href: 'https://www.instagram.com/raushan_sinha02/?hl=en', icon: <FaInstagram /> },
         { href: 'https://github.com/raushan-sinha', icon: <FaGithub /> },
         { href: 'https://www.linkedin.com/in/raushan-sinha-4b94452a1/', icon: <FaLinkedinIn /> },
