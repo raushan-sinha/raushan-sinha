@@ -19,22 +19,21 @@ const About = () => {
 
                     {/* Bio Info */}
                     <div className="about-info">
-                        <h2>About Me</h2>
                         <p className="name">Raushan Sinha</p>
                         <p className="role">Frontend Developer & Web Designer</p>
 
                         {/* Stats */}
                         <div className="stats">
                             <div>
-                                <h3>2+</h3>
+                                <h3>2.5+</h3>
                                 <p>Years Experience</p>
                             </div>
                             <div>
-                                <h3>10+</h3>
+                                <h3>30+</h3>
                                 <p>Projects</p>
                             </div>
                             <div>
-                                <h3>5+</h3>
+                                <h3>10+</h3>
                                 <p>Happy Clients</p>
                             </div>
                         </div>

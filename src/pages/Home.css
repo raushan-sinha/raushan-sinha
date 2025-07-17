@@ -1,171 +1,231 @@
+/* ===== Home.css ===== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root {
+    --bg: #000;
+    --accent: #00e5ff;
+    --accent-glow: #00bfff;
+    --text: #ffffff;
+    --text-muted: #b0b0b0;
+    --font: 'Poppins', sans-serif;
+    --transition: .4s cubic-bezier(.25, .8, .25, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+}
+
+/* --- Animated Background (unchanged) --- */
 .home-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 3rem 2rem;
-    background: #000;
     position: relative;
-    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     overflow: hidden;
+    margin-top: 5%;
 }
 
 .background-animation {
     position: absolute;
     inset: 0;
-    z-index: 0;
-    background: linear-gradient(270deg, #0ef, #0ff, #09f, #0ef);
-    background-size: 800% 800%;
-    animation: gradientMove 15s ease infinite;
-    opacity: 0.15;
-    filter: blur(100px);
+    background: radial-gradient(circle at 20% 35%, #000 0%, #000 40%, transparent 70%),
+        radial-gradient(circle at 80% 65%, #000 0%, #000 40%, transparent 70%);
 }
 
-@keyframes gradientMove {
+.background-animation::before,
+.background-animation::after {
+    content: '';
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, var(--accent), var(--accent-glow));
+    opacity: .08;
+    animation: float 20s infinite linear;
+}
+
+.background-animation::after {
+    width: 600px;
+    height: 600px;
+    animation-duration: 35s;
+    animation-direction: reverse;
+}
+
+@keyframes float {
     0% {
-        background-position: 0% 50%;
+        transform: translate(-50%, -50%) rotate(0deg) scale(1);
     }
 
     50% {
-        background-position: 100% 50%;
+        transform: translate(50%, 50%) rotate(180deg) scale(1.2);
     }
 
     100% {
-        background-position: 0% 50%;
+        transform: translate(-50%, -50%) rotate(360deg) scale(1);
     }
 }
 
+/* --- Content Wrapper --- */
 .content-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2.5rem;
-    max-width: 1200px;
-    width: 100%;
+    position: relative;
     z-index: 1;
+    width: 90%;
+    max-width: 1100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+    margin: 4rem auto;
+    animation: fadeUp 1s var(--transition) forwards;
+    opacity: 0;
+    transform: translateY(40px);
 }
 
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- Image --- */
 .image-container {
-    flex: 1 1 280px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-shrink: 0;
 }
 
 .profile-image {
-    width: 220px;
-    height: 220px;
+    width: clamp(150px, 28vw, 260px);
+    height: clamp(150px, 28vw, 260px);
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid #0ef;
-    transition: transform 0.4s ease-in-out;
+    box-shadow: 0 0 0 3px var(--accent-glow),
+        0 0 30px rgba(0, 191, 255, 0.35);
+    animation: pulse 2.5s infinite;
 }
 
-.profile-image:hover {
-    transform: scale(1.05);
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 3px var(--accent-glow), 0 0 30px rgba(0, 191, 255, 0.35);
+    }
+
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 5px var(--accent-glow), 0 0 50px rgba(0, 191, 255, 0.55);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 3px var(--accent-glow), 0 0 30px rgba(0, 191, 255, 0.35);
+    }
 }
 
+/* --- Info --- */
 .info-container {
-    flex: 2 1 400px;
-    display: flex;
-    flex-direction: column;
-    gap: 1.2rem;
-    padding: 0;
+    text-align: center;
+    max-width: 600px;
 }
 
 .name {
-    font: 700 2.6rem/1.2 'Segoe UI', sans-serif;
-    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: .25em;
 }
 
 .role {
-    font: 500 1.5rem 'Segoe UI', sans-serif;
-    color: #0ef;
-    display: flex;
+    font-size: clamp(1.2rem, 3vw, 1.9rem);
+    font-weight: 600;
+    color: var(--accent);
+    display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    margin: 0;
+    gap: .5rem;
 }
 
 .bio {
-    font: 1.05rem/1.7 'Segoe UI', sans-serif;
-    color: #ccc;
-    margin: 0.5rem 0 0;
+    margin: 1.2em 0 1.8em;
+    line-height: 1.7;
+    color: var(--text-muted);
+    font-size: clamp(.95rem, 2.2vw, 1.1rem);
 }
 
 .resume-button {
     display: inline-block;
-    padding: 10px 20px;
-    width: 25%;
-    background: #0ef;
+    padding: .9em 2.2em;
+    border-radius: 6px;
+    background: var(--accent);
     color: #000;
-    border-radius: 30px;
-    font: 600 1rem 'Segoe UI', sans-serif;
+    font-weight: 600;
     text-decoration: none;
-    transition: background 0.3s;
+    transition: var(--transition);
+    box-shadow: 0 0 10px rgba(0, 229, 255, .5);
 }
 
 .resume-button:hover {
-    background: #00bcd4;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 229, 255, .6);
 }
 
+/* --- Social Links (responsive) --- */
 .social-links {
+    margin-top: 2rem;
     display: flex;
-    gap: 1.5rem;
-    margin-top: 1rem;
+    justify-content: center;
+    gap: clamp(1rem, 3vw, 2rem);
 }
 
 .social-links a {
-    color: #0ef;
-    font-size: 1.8rem;
-    transition: transform 0.3s;
+    display: inline-flex;
+    align-items: center;
+    color: var(--text-muted);
+    font-size: clamp(1.25rem, 3vw, 2rem);
+    transition: var(--transition);
 }
 
 .social-links a:hover {
-    transform: scale(1.2);
+    color: var(--accent);
+    transform: scale(1.15);
 }
 
-/* Responsive Design */
-@media (max-width: 992px) {
+/* --- Desktop Row Layout --- */
+@media (min-width: 992px) {
     .content-wrapper {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 4rem;
+        margin: 0 auto;
     }
 
-    .image-container {
+    .info-container {
+        text-align: left;
+        max-width: 550px;
+    }
+
+    .social-links {
         justify-content: flex-start;
     }
-
-    .profile-image {
-        width: 180px;
-        height: 180px;
-    }
-
-    .name {
-        font-size: 2.2rem;
-    }
-
-    .role {
-        font-size: 1.2rem;
-    }
-
-    .bio {
-        font-size: 1rem;
-    }
-
-    .resume-button {
-        padding: 10px 20px;
-        width: 30%;
-    }
 }
 
-@media (max-width: 576px) {
-    .home-container {
-        padding: 2rem 1rem;
+/* --- Small Landscape Phones --- */
+@media (max-height: 500px) and (orientation: landscape) {
+    .content-wrapper {
+        flex-direction: row;
+        gap: 1.5rem;
     }
 
     .profile-image {
-        width: 150px;
-        height: 150px;
+        width: 110px;
+        height: 110px;
     }
 
     .name {
@@ -173,19 +233,11 @@
     }
 
     .role {
-        font-size: 1rem;
+        font-size: 1.1rem;
     }
 
     .bio {
-        font-size: 0.95rem;
-    }
-
-    .resume-button {
-        padding: 10px 20px;
-        width: 50%;
-    }
-
-    .social-links a {
-        font-size: 1.2rem;
+        font-size: .9rem;
+        margin: .6em 0 1em;
     }
 }
