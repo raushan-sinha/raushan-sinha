@@ -1,4 +1,3 @@
-/* ===== About.css (complete rewrite) ===== */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
 :root {
@@ -18,18 +17,18 @@
 }
 
 body {
-    font-family: var(--font);
+    font: 1rem var(--font);
     background: var(--bg);
     color: var(--text);
     line-height: 1.6;
 }
 
-/* 1. Animated background – stays behind everything */
 .background-animation {
     position: fixed;
     inset: 0;
     z-index: -1;
-    background: radial-gradient(circle at 20% 35%, #000 0%, #000 40%, transparent 70%),
+    background:
+        radial-gradient(circle at 20% 35%, #000 0%, #000 40%, transparent 70%),
         radial-gradient(circle at 80% 65%, #000 0%, #000 40%, transparent 70%);
 }
 
@@ -37,12 +36,16 @@ body {
 .background-animation::after {
     content: '';
     position: absolute;
-    width: 400px;
-    height: 400px;
     border-radius: 50%;
     background: linear-gradient(45deg, var(--accent), var(--accent-glow));
     opacity: .08;
-    animation: float 20s infinite linear;
+    animation: float linear infinite;
+}
+
+.background-animation::before {
+    width: 400px;
+    height: 400px;
+    animation-duration: 20s;
 }
 
 .background-animation::after {
@@ -54,7 +57,7 @@ body {
 
 @keyframes float {
     0% {
-        transform: translate(-50%, -50%) rotate(0deg) scale(1);
+        transform: translate(-50%, -50%) rotate(0) scale(1);
     }
 
     50% {
@@ -66,18 +69,17 @@ body {
     }
 }
 
-/* 2. Section wrapper */
 .about-section {
     width: 90%;
     max-width: 1100px;
-    margin: 4rem auto;
+    margin: 10% auto 4rem;
     display: flex;
     flex-direction: column;
     gap: 4rem;
     animation: fadeUp 1s var(--transition) forwards;
     opacity: 0;
     transform: translateY(40px);
-    margin-top: 10%;
+    margin-top: 20%;
 }
 
 @keyframes fadeUp {
@@ -87,7 +89,6 @@ body {
     }
 }
 
-/* 3. Top flex grid (image + info) */
 .about-grid {
     display: flex;
     flex-direction: column;
@@ -97,7 +98,7 @@ body {
 
 .about-image img {
     width: clamp(150px, 28vw, 260px);
-    aspect-ratio: 1/1;
+    aspect-ratio: 1 / 1;
     border-radius: 50%;
     object-fit: cover;
     box-shadow: 0 0 0 3px var(--accent-glow), 0 0 30px rgba(0, 191, 255, .35);
@@ -105,16 +106,14 @@ body {
 }
 
 @keyframes pulse {
-    0% {
+
+    0%,
+    100% {
         transform: scale(1);
     }
 
     50% {
         transform: scale(1.05);
-    }
-
-    100% {
-        transform: scale(1);
     }
 }
 
@@ -127,8 +126,7 @@ body {
 }
 
 .about-info .name {
-    font-size: clamp(1.8rem, 5vw, 2.8rem);
-    font-weight: 700;
+    font: 700 clamp(1.8rem, 5vw, 2.8rem) var(--font);
     color: cyan;
 }
 
@@ -137,7 +135,6 @@ body {
     color: var(--text-muted);
 }
 
-/* 4. Stats – responsive boxes */
 .stats {
     margin-top: 1.5rem;
     width: 100%;
@@ -173,7 +170,6 @@ body {
     color: var(--text-muted);
 }
 
-/* 5. Timeline */
 .timeline h3 {
     font-size: clamp(1.5rem, 4vw, 2.2rem);
     margin-bottom: 2rem;
@@ -191,8 +187,8 @@ body {
 .timeline-item::before {
     content: '';
     position: absolute;
-    left: -8px;
     top: 0;
+    left: -8px;
     width: 14px;
     height: 14px;
     border-radius: 50%;
@@ -214,7 +210,6 @@ body {
     color: var(--text-muted);
 }
 
-/* 6. Who I Am */
 .whoami h3 {
     font-size: clamp(1.5rem, 4vw, 2.2rem);
     margin-bottom: 1rem;
@@ -230,7 +225,6 @@ body {
     color: var(--text);
 }
 
-/* 7. Responsive layout */
 @media (min-width:768px) {
     .about-grid {
         flex-direction: row;
