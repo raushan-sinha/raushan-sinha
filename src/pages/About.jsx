@@ -4,6 +4,19 @@ import myImage from '../assets/Raushan-Image.jpg';
 import Navbar from "../components/Navbar";
 
 const About = () => {
+    //todo: Developer Stats -
+    const devStats = [
+        { heading: '2.5+', para: 'Years Experience' },
+        { heading: '30+', para: 'Years Experience' },
+        { heading: '5+', para: 'Happy Clients' }
+    ];
+
+    //todo: Tech Stacks -
+    const techStacks = [
+        'HTML, ', 'CSS3, ', 'JavaScript (ES6+), ', 'React, ', 'Bootstrap, ', 'Tailwind CSS'
+    ];
+
+
     return (
         <>
             <Navbar />
@@ -24,18 +37,12 @@ const About = () => {
 
                         {/* Stats */}
                         <div className="stats">
-                            <div>
-                                <h3>2.5+</h3>
-                                <p>Years Experience</p>
-                            </div>
-                            <div>
-                                <h3>30+</h3>
-                                <p>Projects</p>
-                            </div>
-                            <div>
-                                <h3>10+</h3>
-                                <p>Happy Clients</p>
-                            </div>
+                            {devStats.map((title, idx) => (
+                                <div key={idx}>
+                                    <h3>{title.heading}</h3>
+                                    <p>{title.para}</p>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </div>
@@ -78,7 +85,9 @@ const About = () => {
                     <h3>Who I Am</h3>
                     <p>
                         Hi, I’m <strong>Raushan Sinha</strong> — a passionate Frontend Developer 👨‍💻 who builds responsive and interactive websites.
-                        I use <strong>HTML5</strong>, <strong>CSS3</strong>, <strong>JavaScript (ES6+)</strong>, <strong>React</strong>, <strong>Bootstrap</strong>, and <strong>Tailwind CSS</strong>.
+                        I use {techStacks.map((name, idx) => (
+                            <strong key={idx}>{name}</strong>
+                        ))}.
                         Some of my best works include <em>VirtuoX</em>, <em>Sendify</em>, and <em>TechStorm</em>.
                     </p>
                     <p>
