@@ -4,6 +4,11 @@ import myImage from '../assets/Raushan-Image.jpg';
 import Navbar from "../components/Navbar";
 
 const About = () => {
+    //todo: Developer Title -
+    const devName = 'Raushan Sinha'
+    const devProfile = 'Frontend Developer & Web Designer';
+
+
     //todo: Developer Stats -
     const devStats = [
         { heading: '2.5+', para: 'Years Experience' },
@@ -11,9 +16,16 @@ const About = () => {
         { heading: '5+', para: 'Happy Clients' }
     ];
 
+
     //todo: Tech Stacks -
     const techStacks = [
         'HTML, ', 'CSS3, ', 'JavaScript (ES6+), ', 'React, ', 'Bootstrap, ', 'Tailwind CSS'
+    ];
+
+
+    //todo: Projects name -
+    const projectsName = [
+        'VirtuoX', 'MangoLeaf Pvt.', 'Contact-Form', 'Dev Badge', 'CiriUAE'
     ];
 
 
@@ -32,8 +44,8 @@ const About = () => {
 
                     {/* Bio Info */}
                     <div className="about-info">
-                        <p className="name">Raushan Sinha</p>
-                        <p className="role">Frontend Developer & Web Designer</p>
+                        <p className="name">{devName}</p>
+                        <p className="role">{devProfile}</p>
 
                         {/* Stats */}
                         <div className="stats">
@@ -88,11 +100,13 @@ const About = () => {
                         I use {techStacks.map((name, idx) => (
                             <strong key={idx}>{name}</strong>
                         ))}.
-                        Some of my best works include <em>VirtuoX</em>, <em>Sendify</em>, and <em>TechStorm</em>.
+                        Some of my best works include {projectsName.map((project, idx) => (
+                            <em key={idx}>{project}, </em>
+                        ))}.
                     </p>
                     <p>
-                        I’m currently learning backend technologies like MySQL, and planning to add <strong>Next.js, Node.js</strong>, and <strong>MongoDB</strong> to my stack.
-                        I post blogs on Dev Community and Daily.dev, and share projects on GitHub, LinkedIn, and X to showcase my work and connect with potential employers.
+                        I’m currently learning backend technologies like <strong>MySQL</strong> and planning to start <strong>Next.js, Node.js</strong>, and <strong>MongoDB</strong> to my stack.
+                        I post blogs on Dev Community and Daily.dev and share projects on GitHub, LinkedIn, and X to showcase my work and connect with potential employers.
                     </p>
                     <p>
                         Outside of coding, I love exploring new tech, writing, and learning continuously. My dream is to build full-scale web apps that make users' lives better, cleaner, and more engaging.
