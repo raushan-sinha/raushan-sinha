@@ -34,6 +34,7 @@
 
 🔗 Visit my portfolio: [raushan-sinha.vercel.app](https://raushan-sinha.vercel.app)
 
+
 ---
 
 ## 📂 Featured Projects
@@ -54,10 +55,10 @@
 
 ## 📫 Contact Me
 
-- 📧 **Email**: raushansinha45@gmail.com  
-- 🌐 **Portfolio**: [raushan-sinha.vercel.app](https://raushan-sinha.vercel.app)  
-- 💼 **LinkedIn**: [linkedin.com/in/raushan-sinha](https://linkedin.com/in/raushan-sinha)  
-- 🐦 **Twitter**: [@raushansinha45](https://twitter.com/raushansinha45)  
+- 📧 **Email**: raushankrsinha2004@gmail.com 
+- 🌐 **Portfolio**: (https://raushan-sinha.vercel.app)  
+- 💼 **LinkedIn**: (https://www.linkedin.com/in/raushan-sinha-4b94452a1/)  
+- 🐦 **Twitter**: (https://x.com/84Raushan)  
 
 ---
 
