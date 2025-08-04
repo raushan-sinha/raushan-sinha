@@ -26,6 +26,7 @@ const Contact = () => {
     const [email, setEmail] = useState('');
     const [subject, setSubject] = useState('');
     const [message, setMessage] = useState('');
+    const [formResult, setFormResult] = useState('');
 
     //todo: Check all input fields -
     const [error, setError] = useState(null);
@@ -43,6 +44,36 @@ const Contact = () => {
             }, 2000);
             return;
         }
+
+        //todo: Handle Message with an API -
+        setFormResult('Sending...');
+        const formData = new FormData();
+        formData.append('name', name);
+        formData.append('email', email);
+        formData.append('subject', subject);
+        formData.append('message', message);
+        formData.append('access_key', '5fecc6e9-0eda-423f-ba7a-2ae89e021c61');
+        try {
+            const response = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData
+            });
+            const result = await response.json();
+            if (result.success) {
+                setFormResult(`Message sent successfully. Thanks ${name} for contacting Me.`);
+                setName('');
+                setEmail('');
+                setSubject('');
+                setMessage('');
+            } else {
+                setFormResult(result.message || 'Something went wrong!');
+            }
+        } catch (error) {
+            setFormResult('Network connection error! Please check your connection');
+        }
+
+        //? Remove Result message after message sent -
+        setTimeout(() => setFormResult(''), 3000);
     }
 
     //todo: Reset Form -
@@ -96,6 +127,7 @@ const Contact = () => {
                                 <button type="reset" onClick={resetForm}>Reset Message</button>
                             </div>
                             {error}
+                            <div className={`formResultBox ${formResult ? 'show' : ''}`}>{formResult}</div>
                         </form>
                     </div>
                 </div>

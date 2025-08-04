@@ -155,6 +155,51 @@
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.formResultBox {
+    min-height: 24px;
+    margin-top: 12px;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-align: center;
+    background: cyan;
+    color: black;
+    border: 1px solid rgba(77, 255, 77, 0.3);
+    box-shadow: 0 2px 12px rgba(44, 62, 80, 0.08);
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+    pointer-events: none;
+    transition: opacity 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+        transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.formResultBox.show {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    pointer-events: auto;
+    animation: resultPulse 1.2s;
+}
+
+@keyframes resultPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(44, 62, 80, 0.15);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(44, 62, 80, 0.05);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(44, 62, 80, 0.0);
+    }
 }
